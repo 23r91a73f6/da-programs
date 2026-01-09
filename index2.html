@@ -1,0 +1,15 @@
+import pandas as pd
+from sklearn.impute import simpleImputer
+#sample dataset with missing values
+data={'Age':[25,30,None,22,None,28],
+'Salary':[50000,None,60000,52000,50000,None]
+      }
+df=pd.DataFrame(data)
+print('original data')
+print(df)
+#creating the imputation model(mean strategy)
+imputer=simpleImputer(strategy='mean')
+#fitting and transforming the data
+df_imputed=pd.DataFrame(imputer.fit_transform(df),columns=df.columns)
+print("\n Data after mean Imputation:")
+print(df_imputed)
